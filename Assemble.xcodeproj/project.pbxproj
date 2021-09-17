@@ -58,16 +58,72 @@
 		BE364F6326F5116A004FA8C2 /* Assemble */ = {
 			isa = PBXGroup;
 			children = (
-				BE364F6426F5116A004FA8C2 /* AppDelegate.swift */,
-				BE364F6626F5116A004FA8C2 /* SceneDelegate.swift */,
-				BE364F6826F5116A004FA8C2 /* ViewController.swift */,
-				BE364F6A26F5116B004FA8C2 /* Main.storyboard */,
-				BE364F7026F5116F004FA8C2 /* Assets.xcassets */,
-				BE364F7226F5116F004FA8C2 /* LaunchScreen.storyboard */,
-				BE364F7526F5116F004FA8C2 /* Info.plist */,
-				BE364F6D26F5116B004FA8C2 /* Assemble.xcdatamodeld */,
+				BE364F7D26F51467004FA8C2 /* Application */,
+				BE364F8126F514DD004FA8C2 /* Controllers */,
+				BE364F8226F514FE004FA8C2 /* CoreData */,
+				BE364F8326F515A4004FA8C2 /* Models */,
+				BE364F8026F514AE004FA8C2 /* Resources */,
+				BE364F7F26F5149A004FA8C2 /* Storyboards */,
+				BE364F8426F515B7004FA8C2 /* Views */,
 			);
 			path = Assemble;
+			sourceTree = "<group>";
+		};
+		BE364F7D26F51467004FA8C2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BE364F6426F5116A004FA8C2 /* AppDelegate.swift */,
+				BE364F6626F5116A004FA8C2 /* SceneDelegate.swift */,
+				BE364F7526F5116F004FA8C2 /* Info.plist */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		BE364F7F26F5149A004FA8C2 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BE364F6A26F5116B004FA8C2 /* Main.storyboard */,
+				BE364F7226F5116F004FA8C2 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		BE364F8026F514AE004FA8C2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BE364F7026F5116F004FA8C2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BE364F8126F514DD004FA8C2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BE364F6826F5116A004FA8C2 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BE364F8226F514FE004FA8C2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BE364F6D26F5116B004FA8C2 /* Assemble.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		BE364F8326F515A4004FA8C2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BE364F8426F515B7004FA8C2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

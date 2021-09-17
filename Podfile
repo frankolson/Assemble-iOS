@@ -7,5 +7,5 @@ target 'Assemble' do
   # Pods for Assemble
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-  pod 'FirebaseUI'
+  # pod 'FirebaseUI'
 end

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		BE364F7426F5116F004FA8C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE364F7226F5116F004FA8C2 /* LaunchScreen.storyboard */; };
 		BE364F8826F516DC004FA8C2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE364F8726F516DC004FA8C2 /* Colors.swift */; };
 		BE364F8A26F51781004FA8C2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE364F8926F51781004FA8C2 /* Colors.xcassets */; };
+		BE364F8C26F54881004FA8C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE364F8B26F54881004FA8C2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		BE364F7526F5116F004FA8C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE364F8726F516DC004FA8C2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BE364F8926F51781004FA8C2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		BE364F8B26F54881004FA8C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEF25D783621AD2C3BF72A15 /* Pods-Assemble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assemble.release.xcconfig"; path = "Target Support Files/Pods-Assemble/Pods-Assemble.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,7 +56,6 @@
 				1CBACA429D02B5F9DA51B71A /* Pods-Assemble.debug.xcconfig */,
 				DEF25D783621AD2C3BF72A15 /* Pods-Assemble.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -101,6 +102,7 @@
 		BE364F7D26F51467004FA8C2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				BE364F8B26F54881004FA8C2 /* GoogleService-Info.plist */,
 				BE364F6426F5116A004FA8C2 /* AppDelegate.swift */,
 				BE364F6626F5116A004FA8C2 /* SceneDelegate.swift */,
 				BE364F7526F5116F004FA8C2 /* Info.plist */,
@@ -169,7 +171,6 @@
 				BE364F5E26F5116A004FA8C2 /* Frameworks */,
 				BE364F5F26F5116A004FA8C2 /* Resources */,
 				303FE66C75642B07E67A9F8B /* [CP] Embed Pods Frameworks */,
-				C23FDBBB94D34F6CB83FAB4E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,6 +220,7 @@
 			files = (
 				BE364F7426F5116F004FA8C2 /* LaunchScreen.storyboard in Resources */,
 				BE364F8A26F51781004FA8C2 /* Colors.xcassets in Resources */,
+				BE364F8C26F54881004FA8C2 /* GoogleService-Info.plist in Resources */,
 				BE364F7126F5116F004FA8C2 /* Assets.xcassets in Resources */,
 				BE364F6C26F5116B004FA8C2 /* Main.storyboard in Resources */,
 			);
@@ -242,23 +244,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Assemble/Pods-Assemble-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C23FDBBB94D34F6CB83FAB4E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Assemble/Pods-Assemble-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Assemble/Pods-Assemble-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Assemble/Pods-Assemble-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D464B74DDC07AB908DAB310E /* [CP] Check Pods Manifest.lock */ = {
@@ -450,7 +435,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cyberhoodie.Assemble;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyberhoodie.Assemble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -471,7 +456,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cyberhoodie.Assemble;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyberhoodie.Assemble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

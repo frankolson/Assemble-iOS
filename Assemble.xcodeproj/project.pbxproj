@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		24AD109845260E8F085AF381 /* Pods_Assemble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0C61C433E28EFC2F318364 /* Pods_Assemble.framework */; };
-		BE074C3B26F5671B0044809C /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE074C3A26F5671B0044809C /* EventsViewController.swift */; };
+		BE074C3B26F5671B0044809C /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE074C3A26F5671B0044809C /* MyEventsViewController.swift */; };
 		BE074C3D26F5703D0044809C /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE074C3C26F5703D0044809C /* Events.storyboard */; };
+		BE074C3F26F690C80044809C /* FirebaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE074C3E26F690C80044809C /* FirebaseConstants.swift */; };
 		BE364F6526F5116A004FA8C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE364F6426F5116A004FA8C2 /* AppDelegate.swift */; };
 		BE364F6726F5116A004FA8C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE364F6626F5116A004FA8C2 /* SceneDelegate.swift */; };
 		BE364F6926F5116A004FA8C2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE364F6826F5116A004FA8C2 /* StartViewController.swift */; };
@@ -25,8 +26,9 @@
 /* Begin PBXFileReference section */
 		1CBACA429D02B5F9DA51B71A /* Pods-Assemble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assemble.debug.xcconfig"; path = "Target Support Files/Pods-Assemble/Pods-Assemble.debug.xcconfig"; sourceTree = "<group>"; };
 		6E0C61C433E28EFC2F318364 /* Pods_Assemble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Assemble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE074C3A26F5671B0044809C /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		BE074C3A26F5671B0044809C /* MyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		BE074C3C26F5703D0044809C /* Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
+		BE074C3E26F690C80044809C /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
 		BE13BC5826F5531600D2F5EE /* Assemble.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Assemble.entitlements; sourceTree = "<group>"; };
 		BE364F6126F5116A004FA8C2 /* Assemble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assemble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE364F6426F5116A004FA8C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				BE364F7026F5116F004FA8C2 /* Assets.xcassets */,
 				BE364F8926F51781004FA8C2 /* Colors.xcassets */,
+				BE074C3E26F690C80044809C /* FirebaseConstants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -139,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				BE364F6826F5116A004FA8C2 /* StartViewController.swift */,
-				BE074C3A26F5671B0044809C /* EventsViewController.swift */,
+				BE074C3A26F5671B0044809C /* MyEventsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -307,7 +310,8 @@
 				BE364F6F26F5116B004FA8C2 /* Assemble.xcdatamodeld in Sources */,
 				BE364F6526F5116A004FA8C2 /* AppDelegate.swift in Sources */,
 				BE364F6726F5116A004FA8C2 /* SceneDelegate.swift in Sources */,
-				BE074C3B26F5671B0044809C /* EventsViewController.swift in Sources */,
+				BE074C3B26F5671B0044809C /* MyEventsViewController.swift in Sources */,
+				BE074C3F26F690C80044809C /* FirebaseConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

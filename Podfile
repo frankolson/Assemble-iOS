@@ -7,5 +7,8 @@ target 'Assemble' do
   # Pods for Assemble
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-  # pod 'FirebaseUI'
+  pod 'FirebaseUI/Auth'
+  pod 'FirebaseUI/Email'
+  pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/OAuth' # Used for Sign in with Apple
 end

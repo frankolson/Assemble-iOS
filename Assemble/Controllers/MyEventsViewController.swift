@@ -39,16 +39,22 @@ class MyEventsViewController: UIViewController {
         ref.child("userEvents").child(user.uid).getData(completion: { error, snapshot in
             guard error == nil else { return }
             
-            let userEvents = snapshot.value as! [String:Bool]
-            
-            for uid in userEvents.keys {
-                self.ref.child("events").child(uid).getData { error, snapshot in
-                    guard error == nil else { return }
-                    
-                    self.myEvents.append(snapshot)
+            if let userEvents = snapshot.value as? [String:Bool] {
+                for uid in userEvents.keys {
+                    self.ref.child("events").child(uid).getData { error, snapshot in
+                        guard error == nil else { return }
+                        
+                        self.myEvents.append(snapshot)
+                    }
                 }
             }
         })
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func presentCreateNewEvent(_ sender: Any) {
+        performSegue(withIdentifier: "createEvent", sender: nil)
     }
     
 }

@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import CodableFirebase
 
 class MyEventsViewController: UIViewController {
     
@@ -21,7 +22,7 @@ class MyEventsViewController: UIViewController {
     var ref: DatabaseReference!
     fileprivate var _refHandle: DatabaseHandle!
     var user: User!
-    var myEvents: [DataSnapshot] = []
+    var myEvents: [Event] = []
     
     // MARK: Lifecycle
     
@@ -37,14 +38,17 @@ class MyEventsViewController: UIViewController {
         myEvents = []
         
         ref.child("userEvents").child(user.uid).getData(completion: { error, snapshot in
-            guard error == nil else { return }
+            guard let userEvents = snapshot.value as? [String:Bool] else { return }
             
-            if let userEvents = snapshot.value as? [String:Bool] {
-                for uid in userEvents.keys {
-                    self.ref.child("events").child(uid).getData { error, snapshot in
-                        guard error == nil else { return }
-                        
-                        self.myEvents.append(snapshot)
+            for uid in userEvents.keys {
+                self.ref.child("events").child(uid).getData { error, snapshot in
+                    guard let value = snapshot.value else { return }
+                    
+                    do {
+                        let event = try FirebaseDecoder().decode(Event.self, from: value)
+                        self.myEvents.append(event)
+                    } catch let error {
+                        debugPrint(error)
                     }
                 }
             }
@@ -70,13 +74,12 @@ extension MyEventsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // dequeue cell
         let cell: UITableViewCell = myEventsTable.dequeueReusableCell(withIdentifier: "myEventCell", for: indexPath)
-        let myEventSnapshot: DataSnapshot! = myEvents[indexPath.row]
-        let myEvent = myEventSnapshot.value as! [String:String]
+        let myEvent: Event! = myEvents[indexPath.row]
+//        let myEvent = myEventSnapshot.value as! [String:String]
         
-        let title = myEvent[Constants.EventFields.title]
-        cell.textLabel?.text = title
+        cell.textLabel?.text = myEvent.title
         
-        if let startDateString = myEvent[Constants.EventFields.startDate] {
+        if let startDateString = myEvent.startDate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
             dateFormatter.doesRelativeDateFormatting = true

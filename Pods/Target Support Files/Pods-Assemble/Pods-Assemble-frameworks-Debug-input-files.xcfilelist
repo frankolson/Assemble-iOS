@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-Assemble/Pods-Assemble-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework
+${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseAuthUI/FirebaseAuthUI.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework

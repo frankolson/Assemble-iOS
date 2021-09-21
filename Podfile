@@ -11,4 +11,5 @@ target 'Assemble' do
   pod 'FirebaseUI/Email'
   pod 'FirebaseUI/Google'
   pod 'FirebaseUI/OAuth' # Used for Sign in with Apple
+  pod 'CodableFirebase'
 end

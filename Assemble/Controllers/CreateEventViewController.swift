@@ -11,7 +11,7 @@ class CreateEventViewController: UITableViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var titleCell: UITableViewCell!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var startDateCell: UITableViewCell!
     @IBOutlet weak var startDatePickerCell: DatePickerTableViewCell!
     @IBOutlet weak var startTimeCell: UITableViewCell!
@@ -40,9 +40,11 @@ class CreateEventViewController: UITableViewController {
         // Set cancel and save navigation button actions
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(save))
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         
-        setDescriptionLabel(newEvent.description ?? "")
+        titleTextField.addTarget(self, action: #selector(titleChanged(textField:)), for: .editingChanged)
         configureSchedulingFields()
+        setDescriptionLabel(newEvent.description ?? "")
     }
     
     func configureSchedulingFields() {
@@ -67,6 +69,19 @@ class CreateEventViewController: UITableViewController {
     @objc func save() {
         print("saved!!")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func titleChanged(textField: UITextField) {
+        validateTitlePresence(textField: textField)
+        newEvent.title = textField.text
+    }
+    
+    func validateTitlePresence(textField: UITextField) {
+        if (textField.text ?? "").isEmpty {
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        } else {
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        }
     }
     
     @objc func startDateChanged(datePicker: UIDatePicker) {

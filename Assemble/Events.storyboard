@@ -391,7 +391,7 @@
                         <outlet property="startDatePickerCell" destination="f4L-qt-eCM" id="hpc-L3-IpG"/>
                         <outlet property="startTimeCell" destination="NgD-SS-CbH" id="SHE-sQ-qZH"/>
                         <outlet property="startTimePickerCell" destination="hQ3-XG-KIl" id="4DE-k2-KkV"/>
-                        <outlet property="titleCell" destination="MfV-vk-zSz" id="TlJ-gB-L7f"/>
+                        <outlet property="titleTextField" destination="YYY-QL-eoi" id="YwZ-aD-JtF"/>
                         <segue destination="nSQ-m1-Z0L" kind="show" identifier="createEventDecriptionEdit" id="JtJ-6m-Kyh"/>
                     </connections>
                 </tableViewController>

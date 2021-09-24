@@ -23,6 +23,7 @@
 		BE364F8A26F51781004FA8C2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE364F8926F51781004FA8C2 /* Colors.xcassets */; };
 		BE364F8C26F54881004FA8C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE364F8B26F54881004FA8C2 /* GoogleService-Info.plist */; };
 		BE97DF1E26F8E34A00F43394 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE97DF1D26F8E34A00F43394 /* Event.swift */; };
+		BEA8F1C126FD6A82006D442E /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA8F1C026FD6A82006D442E /* DatePickerTableViewCell.swift */; };
 		BEBFE05926F6BF9B00231F30 /* EditDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBFE05826F6BF9B00231F30 /* EditDescriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		BE364F8926F51781004FA8C2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BE364F8B26F54881004FA8C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BE97DF1D26F8E34A00F43394 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		BEA8F1C026FD6A82006D442E /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		BEBFE05826F6BF9B00231F30 /* EditDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDescriptionViewController.swift; sourceTree = "<group>"; };
 		DEF25D783621AD2C3BF72A15 /* Pods-Assemble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assemble.release.xcconfig"; path = "Target Support Files/Pods-Assemble/Pods-Assemble.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				BE364F8726F516DC004FA8C2 /* Colors.swift */,
+				BEA8F1C026FD6A82006D442E /* DatePickerTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				BE364F6926F5116A004FA8C2 /* StartViewController.swift in Sources */,
 				BEBFE05926F6BF9B00231F30 /* EditDescriptionViewController.swift in Sources */,
 				BE364F8826F516DC004FA8C2 /* Colors.swift in Sources */,
+				BEA8F1C126FD6A82006D442E /* DatePickerTableViewCell.swift in Sources */,
 				BE364F6F26F5116B004FA8C2 /* Assemble.xcdatamodeld in Sources */,
 				BE97DF1E26F8E34A00F43394 /* Event.swift in Sources */,
 				BE364F6526F5116A004FA8C2 /* AppDelegate.swift in Sources */,

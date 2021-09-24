@@ -78,16 +78,7 @@ extension MyEventsViewController: UITableViewDelegate, UITableViewDataSource {
 //        let myEvent = myEventSnapshot.value as! [String:String]
         
         cell.textLabel?.text = myEvent.title
-        
-        if let startDateString = myEvent.startDate {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.doesRelativeDateFormatting = true
-            
-            if let startDate = dateFormatter.date(from: startDateString) {
-                cell.detailTextLabel?.text = dateFormatter.string(from: startDate)
-            }
-        }
+        cell.detailTextLabel?.text = myEvent.formattedStartDate
         
         return cell
     }

@@ -11,9 +11,55 @@ struct NewEvent: Codable {
     var title: String?
     var description: String?
     var startDate: String?
-    var startTime: String?
+    var startTime: Int?
     var endDate: String?
-    var endTime: String?
+    var endTime: Int?
+    
+    var formattedStartDate: String? {
+        guard let startDateIso = startDate else { return nil }
+        return formatIsoDate(startDateIso)
+    }
+    
+    var formattedEndDate: String? {
+        guard let endDateIso = endDate else { return nil }
+        return formatIsoDate(endDateIso)
+    }
+    
+    var formattedStartTime: String? {
+        guard let startTimeIso = startTime else { return nil }
+        return formatEpochTime(startTimeIso)
+    }
+    
+    var formattedEndTime: String? {
+        guard let endTimeIso = endTime else { return nil }
+        return formatEpochTime(endTimeIso)
+    }
+    
+    // MARK: Date formatting helpers
+    
+    private func formatIsoDate(_ isoDateString: String) -> String? {
+        let isoDateFormatter = ISO8601DateFormatter()
+        let isoDate = isoDateFormatter.date(from: isoDateString)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.doesRelativeDateFormatting = true
+        
+        if let isoDate = isoDate {
+            return dateFormatter.string(from: isoDate)
+        } else {
+            return nil
+        }
+    }
+    
+    private func formatEpochTime(_ epochTime: Int) -> String? {
+        let epochTimeInterval = TimeInterval(epochTime)
+        let epochDate = Date(timeIntervalSince1970: epochTimeInterval)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        
+        return dateFormatter.string(from: epochDate)
+    }
 }
 
 struct Event: Codable {
@@ -21,7 +67,53 @@ struct Event: Codable {
     var title: String
     var description: String?
     var startDate: String?
-    var startTime: String?
+    var startTime: Int?
     var endDate: String?
-    var endTime: String?
+    var endTime: Int?
+    
+    var formattedStartDate: String? {
+        guard let startDateIso = startDate else { return nil }
+        return formatIsoDate(startDateIso)
+    }
+    
+    var formattedEndDate: String? {
+        guard let endDateIso = endDate else { return nil }
+        return formatIsoDate(endDateIso)
+    }
+    
+    var formattedStartTime: String? {
+        guard let startTimeIso = startTime else { return nil }
+        return formatEpochTime(startTimeIso)
+    }
+    
+    var formattedEndTime: String? {
+        guard let endTimeIso = endTime else { return nil }
+        return formatEpochTime(endTimeIso)
+    }
+    
+    // MARK: Date formatting helpers
+    
+    private func formatIsoDate(_ isoDateString: String) -> String? {
+        let isoDateFormatter = ISO8601DateFormatter()
+        let isoDate = isoDateFormatter.date(from: isoDateString)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.doesRelativeDateFormatting = true
+        
+        if let isoDate = isoDate {
+            return dateFormatter.string(from: isoDate)
+        } else {
+            return nil
+        }
+    }
+    
+    private func formatEpochTime(_ epochTime: Int) -> String? {
+        let epochTimeInterval = TimeInterval(epochTime)
+        let epochDate = Date(timeIntervalSince1970: epochTimeInterval)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        
+        return dateFormatter.string(from: epochDate)
+    }
 }

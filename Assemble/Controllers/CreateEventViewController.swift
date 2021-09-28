@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import CodableFirebase
 
 class CreateEventViewController: UITableViewController {
     
@@ -24,6 +26,7 @@ class CreateEventViewController: UITableViewController {
     
     // MARK: Properties
     
+    var user: User!
     var newEvent = NewEvent(title: nil, description: nil, startDate: nil, startTime: nil, endDate: nil, endTime: nil)
     let collapsedPickerCellHeight: CGFloat = 0
     let schdulingTableSection = 1
@@ -36,6 +39,8 @@ class CreateEventViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        user = Auth.auth().currentUser
         
         // Set cancel and save navigation button actions
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
@@ -67,8 +72,29 @@ class CreateEventViewController: UITableViewController {
     }
     
     @objc func save() {
+        createEvent()
         print("saved!!")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func createEvent() {
+        do {
+            let data = try FirebaseEncoder().encode(newEvent)
+            
+            let reference = Database.database().reference()
+            reference.child("events").childByAutoId().setValue(data) { error, databaseReference in
+                guard error == nil else {
+                    debugPrint(error)
+                    return
+                }
+                
+                let newEventUid = databaseReference.key!
+                reference.child("userEvents/\(self.user.uid)/\(newEventUid)").setValue(data)
+                reference.child("eventOwners/\(newEventUid)/\(self.user.uid)").setValue(true)
+            }
+        } catch let error {
+            debugPrint(error)
+        }
     }
     
     @objc func titleChanged(textField: UITextField) {

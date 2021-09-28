@@ -62,8 +62,8 @@ struct NewEvent: Codable {
     }
 }
 
-struct Event: Codable {
-    let uid: String
+struct Event: FirebaseCodable {
+    var uid: String!
     var title: String
     var description: String?
     var startDate: String?
@@ -89,6 +89,10 @@ struct Event: Codable {
     var formattedEndTime: String? {
         guard let endTimeIso = endTime else { return nil }
         return formatEpochTime(endTimeIso)
+    }
+    
+    mutating func setUid(_ uid: String) {
+        self.uid = uid
     }
     
     // MARK: Date formatting helpers

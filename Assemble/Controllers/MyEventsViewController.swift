@@ -20,7 +20,6 @@ class MyEventsViewController: UIViewController {
     // MARK: Properties
     
     var ref: DatabaseReference!
-    fileprivate var _refHandle: DatabaseHandle!
     var user: User!
     var myEvents: [Event] = []
     
@@ -29,29 +28,34 @@ class MyEventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        myEventsTable.delegate = self
+        myEventsTable.dataSource = self
         user = Auth.auth().currentUser
         ref = Database.database().reference()
         refreshEvents()
     }
     
     func refreshEvents() {
-        myEvents = []
-        
         ref.child("userEvents").child(user.uid).getData(completion: { error, snapshot in
-            guard let userEvents = snapshot.value as? [String:Bool] else { return }
-            
-            for uid in userEvents.keys {
-                self.ref.child("events").child(uid).getData { error, snapshot in
-                    guard let value = snapshot.value else { return }
-                    
-                    do {
-                        let event = try FirebaseDecoder().decode(Event.self, from: value)
-                        self.myEvents.append(event)
-                    } catch let error {
-                        debugPrint(error)
-                    }
-                }
+            guard error == nil else {
+                debugPrint(error!)
+                return
             }
+            guard snapshot.value != nil else { return }
+
+            self.myEvents = snapshot.children.compactMap { singleEventSnapshot -> Event? in
+                do {
+                    let singleEventSnapshot = singleEventSnapshot as! DataSnapshot
+                    let event = try FirebaseDecoder().decode(Event.self, from: singleEventSnapshot.value!)
+                    return event
+                } catch let error {
+                    print(error)
+                }
+                
+                return nil
+            }
+            
+            self.myEventsTable.reloadData()
         })
     }
     
@@ -75,7 +79,6 @@ extension MyEventsViewController: UITableViewDelegate, UITableViewDataSource {
         // dequeue cell
         let cell: UITableViewCell = myEventsTable.dequeueReusableCell(withIdentifier: "myEventCell", for: indexPath)
         let myEvent: Event! = myEvents[indexPath.row]
-//        let myEvent = myEventSnapshot.value as! [String:String]
         
         cell.textLabel?.text = myEvent.title
         cell.detailTextLabel?.text = myEvent.formattedStartDate

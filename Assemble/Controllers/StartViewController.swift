@@ -31,7 +31,6 @@ class StartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser != nil {
-            print("Automatically logging in....")
             segueToEvents()
         }
     }

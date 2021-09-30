@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import CodableFirebase
 
 class CreateEventViewController: UITableViewController {
     
@@ -26,8 +25,9 @@ class CreateEventViewController: UITableViewController {
     
     // MARK: Properties
     
-    var user: User!
-    var newEvent = NewEvent(title: nil, description: nil, startDate: nil, startTime: nil, endDate: nil, endTime: nil)
+    var firebaseClient = FirebaseService()
+    var completionSelector: (() -> Void)!
+    var newEvent = NewEvent()
     let collapsedPickerCellHeight: CGFloat = 0
     let schdulingTableSection = 1
     var pickerActiveStatuses: [Int:Bool] = [1: false,
@@ -39,8 +39,6 @@ class CreateEventViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        user = Auth.auth().currentUser
         
         // Set cancel and save navigation button actions
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
@@ -67,33 +65,20 @@ class CreateEventViewController: UITableViewController {
     // MARK: Actions
     
     @objc func cancel() {
-        print("canceled!!")
+        completionSelector()
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc func save() {
         createEvent()
-        print("saved!!")
-        self.dismiss(animated: true, completion: nil)
     }
     
     func createEvent() {
-        do {
-            let data = try FirebaseEncoder().encode(newEvent)
+        firebaseClient.create(newEvent) { success, error in
+            if error != nil { debugPrint(error!) }
             
-            let reference = Database.database().reference()
-            reference.child("events").childByAutoId().setValue(data) { error, databaseReference in
-                guard error == nil else {
-                    debugPrint(error)
-                    return
-                }
-                
-                let newEventUid = databaseReference.key!
-                reference.child("userEvents/\(self.user.uid)/\(newEventUid)").setValue(data)
-                reference.child("eventOwners/\(newEventUid)/\(self.user.uid)").setValue(true)
-            }
-        } catch let error {
-            debugPrint(error)
+            self.completionSelector()
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -111,22 +96,22 @@ class CreateEventViewController: UITableViewController {
     }
     
     @objc func startDateChanged(datePicker: UIDatePicker) {
-        newEvent.startDate = convertDatetoIsoString(datePicker.date)
+        newEvent.startDate = datePicker.date
         startDateCell.detailTextLabel?.text = newEvent.formattedStartDate ?? "Not set"
     }
     
     @objc func startTimeChanged(datePicker: UIDatePicker) {
-        newEvent.startTime = Int(datePicker.date.timeIntervalSince1970)
+        newEvent.startTime = datePicker.date.timeIntervalSince1970
         startTimeCell.detailTextLabel?.text = newEvent.formattedStartTime ?? "Not set"
     }
     
     @objc func endDateChanged(datePicker: UIDatePicker) {
-        newEvent.endDate = convertDatetoIsoString(datePicker.date)
+        newEvent.endDate = datePicker.date
         endDateCell.detailTextLabel?.text = newEvent.formattedEndDate ?? "Not set"
     }
     
     @objc func endTimeChanged(datePicker: UIDatePicker) {
-        newEvent.endTime = Int(datePicker.date.timeIntervalSince1970)
+        newEvent.endTime = datePicker.date.timeIntervalSince1970
         endTimeCell.detailTextLabel?.text = newEvent.formattedEndTime ?? "Not set"
     }
     
@@ -220,13 +205,6 @@ class CreateEventViewController: UITableViewController {
     func updateDescription(_ newDescription: String) {
         newEvent.description = newDescription
         setDescriptionLabel(newDescription)
-    }
-    
-    // MARK: Date helpers
-    
-    func convertDatetoIsoString(_ date: Date) -> String {
-        let formatter = ISO8601DateFormatter()
-        return formatter.string(from: date)
     }
 
 }

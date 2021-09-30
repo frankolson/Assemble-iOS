@@ -25,6 +25,7 @@
 		BE4C8F7D2702A41300ECE4DD /* FirebaseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C8F7C2702A41300ECE4DD /* FirebaseCodable.swift */; };
 		BE97DF1E26F8E34A00F43394 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE97DF1D26F8E34A00F43394 /* Event.swift */; };
 		BEA8F1C126FD6A82006D442E /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA8F1C026FD6A82006D442E /* DatePickerTableViewCell.swift */; };
+		BEBD87FA27066FE900C63A51 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBD87F927066FE900C63A51 /* FirebaseService.swift */; };
 		BEBFE05926F6BF9B00231F30 /* EditDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBFE05826F6BF9B00231F30 /* EditDescriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		BE4C8F7C2702A41300ECE4DD /* FirebaseCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCodable.swift; sourceTree = "<group>"; };
 		BE97DF1D26F8E34A00F43394 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BEA8F1C026FD6A82006D442E /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
+		BEBD87F927066FE900C63A51 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		BEBFE05826F6BF9B00231F30 /* EditDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDescriptionViewController.swift; sourceTree = "<group>"; };
 		DEF25D783621AD2C3BF72A15 /* Pods-Assemble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assemble.release.xcconfig"; path = "Target Support Files/Pods-Assemble/Pods-Assemble.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +146,7 @@
 				BE364F7026F5116F004FA8C2 /* Assets.xcassets */,
 				BE364F8926F51781004FA8C2 /* Colors.xcassets */,
 				BE074C3E26F690C80044809C /* FirebaseConstants.swift */,
+				BEBD87F927066FE900C63A51 /* FirebaseService.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				BEA8F1C126FD6A82006D442E /* DatePickerTableViewCell.swift in Sources */,
 				BE364F6F26F5116B004FA8C2 /* Assemble.xcdatamodeld in Sources */,
 				BE97DF1E26F8E34A00F43394 /* Event.swift in Sources */,
+				BEBD87FA27066FE900C63A51 /* FirebaseService.swift in Sources */,
 				BE364F6526F5116A004FA8C2 /* AppDelegate.swift in Sources */,
 				BE364F6726F5116A004FA8C2 /* SceneDelegate.swift in Sources */,
 				BE074C3B26F5671B0044809C /* MyEventsViewController.swift in Sources */,

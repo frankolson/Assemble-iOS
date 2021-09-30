@@ -6,9 +6,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
-import CodableFirebase
 
 class MyEventsViewController: UIViewController {
     
@@ -19,8 +16,7 @@ class MyEventsViewController: UIViewController {
     
     // MARK: Properties
     
-    var ref: DatabaseReference!
-    var user: User!
+    var firebaseClient = FirebaseService()
     var myEvents: [Event] = []
     
     // MARK: Lifecycle
@@ -30,39 +26,44 @@ class MyEventsViewController: UIViewController {
 
         myEventsTable.delegate = self
         myEventsTable.dataSource = self
-        user = Auth.auth().currentUser
-        ref = Database.database().reference()
+        refreshEvents()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         refreshEvents()
     }
     
     func refreshEvents() {
-        ref.child("userEvents").child(user.uid).getData(completion: { error, snapshot in
+        firebaseClient.getMyEvents() { events, error in
             guard error == nil else {
                 debugPrint(error!)
                 return
             }
-            guard snapshot.value != nil else { return }
-
-            self.myEvents = snapshot.children.compactMap { singleEventSnapshot -> Event? in
-                do {
-                    let singleEventSnapshot = singleEventSnapshot as! DataSnapshot
-                    let event = try FirebaseDecoder().decode(Event.self, from: singleEventSnapshot.value!)
-                    return event
-                } catch let error {
-                    print(error)
-                }
-                
-                return nil
-            }
             
+            self.myEvents = events
             self.myEventsTable.reloadData()
-        })
+        }
     }
     
     // MARK: Actions
     
     @IBAction func presentCreateNewEvent(_ sender: Any) {
         performSegue(withIdentifier: "createEvent", sender: nil)
+    }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "createEvent" else { return }
+        
+        if let target = segue.destination as? UINavigationController,
+           let root = target.viewControllers[0] as? CreateEventViewController {
+            root.completionSelector = { () in
+                self.refreshEvents()
+            }
+        }
     }
     
 }

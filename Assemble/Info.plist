@@ -28,6 +28,16 @@
 				<string>com.googleusercontent.apps.446421403723-oetufskohclto7oe6m8qlt8he0oghl78</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Bundle ID</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.cyberhoodie.Assemble</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

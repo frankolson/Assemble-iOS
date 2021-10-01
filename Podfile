@@ -5,6 +5,8 @@ target 'Assemble' do
   use_frameworks!
 
   # Pods for Assemble
+  pod 'Firebase/Analytics'
+  pod 'Firebase/DynamicLinks'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'FirebaseUI/Auth'

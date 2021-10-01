@@ -408,26 +408,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fUO-Gj-9lC" userLabel="Desription Textarea">
-                                <rect key="frame" x="20" y="66" width="374" height="742"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HzC-aY-Lp2">
+                                <rect key="frame" x="20" y="56" width="374" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zq0-F0-Q8E"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zq0-F0-Q8E" firstAttribute="bottom" secondItem="fUO-Gj-9lC" secondAttribute="bottom" id="Poq-dM-ubO"/>
-                            <constraint firstItem="zq0-F0-Q8E" firstAttribute="trailing" secondItem="fUO-Gj-9lC" secondAttribute="trailing" constant="20" id="V1d-tw-omu"/>
-                            <constraint firstItem="fUO-Gj-9lC" firstAttribute="leading" secondItem="zq0-F0-Q8E" secondAttribute="leading" constant="20" id="gbj-yB-Vjr"/>
-                            <constraint firstItem="fUO-Gj-9lC" firstAttribute="top" secondItem="zq0-F0-Q8E" secondAttribute="top" constant="10" id="udx-AF-Rft"/>
+                            <constraint firstItem="zq0-F0-Q8E" firstAttribute="bottom" secondItem="HzC-aY-Lp2" secondAttribute="bottom" id="MBq-po-9oR"/>
+                            <constraint firstItem="zq0-F0-Q8E" firstAttribute="trailing" secondItem="HzC-aY-Lp2" secondAttribute="trailing" constant="20" id="Nls-1N-Tip"/>
+                            <constraint firstItem="HzC-aY-Lp2" firstAttribute="leading" secondItem="zq0-F0-Q8E" secondAttribute="leading" constant="20" id="aUM-C0-dkX"/>
+                            <constraint firstItem="HzC-aY-Lp2" firstAttribute="top" secondItem="zq0-F0-Q8E" secondAttribute="top" id="cAt-BS-PsQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Description" id="oOX-aS-zGo">
                         <barButtonItem key="backBarButtonItem" title="Done" id="Jl4-Qe-4TC"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="descriptionTextField" destination="fUO-Gj-9lC" id="A6K-VZ-ypu"/>
+                        <outlet property="descriptionTextView" destination="HzC-aY-Lp2" id="PoR-il-oNm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aPI-mo-opb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -568,6 +571,9 @@
         <namedColor name="Primary">
             <color red="0.0" green="0.29800000786781311" blue="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="placeholderTextColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

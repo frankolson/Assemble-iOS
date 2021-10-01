@@ -11,7 +11,7 @@ class EditDescriptionViewController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     // MARK: Properties
     
@@ -22,19 +22,19 @@ class EditDescriptionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        descriptionTextField.delegate = self
-        descriptionTextField.text = event.description
-        descriptionTextField.becomeFirstResponder()
+        descriptionTextView.delegate = self
+        descriptionTextView.text = event.description
+        descriptionTextView.becomeFirstResponder()
     }
 
 }
 
 // MARK: - UITextViewDelegate
 
-extension EditDescriptionViewController: UITextFieldDelegate {
+extension EditDescriptionViewController: UITextViewDelegate {
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        event.description = descriptionTextField.text
+    func textViewDidEndEditing(_ textView: UITextView) {
+        event.description = descriptionTextView.text
         descriptionUpdator(event.description ?? "")
     }
     

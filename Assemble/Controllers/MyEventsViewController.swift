@@ -56,13 +56,17 @@ class MyEventsViewController: UIViewController {
     // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "createEvent" else { return }
+        guard segue.identifier == "createEvent" || segue.identifier == "showEvent" else { return }
         
         if let target = segue.destination as? UINavigationController,
            let root = target.viewControllers[0] as? CreateEventViewController {
             root.completionSelector = { () in
                 self.refreshEvents()
             }
+        }
+        
+        if let target = segue.destination as? ShowEventViewController {
+            target.event = (sender as! Event)
         }
     }
     
@@ -85,6 +89,11 @@ extension MyEventsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = myEvent.formattedStartDate
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let event = myEvents[indexPath.row]
+        performSegue(withIdentifier: "showEvent", sender: event)
     }
     
 }

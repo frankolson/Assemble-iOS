@@ -54,8 +54,22 @@ class EventBase: Codable {
     }
 }
 
+// MARK: - Models
+
 class NewEvent: EventBase { }
 
 class Event: EventBase, FirebaseCodable {
     var uid: String!
+    
+    func generatedURL() -> URL? {
+        var components = URLComponents()
+        let queryItem = URLQueryItem(name: "eventUid", value: uid)
+
+        components.scheme = Constants.URL.scheme
+        components.host = Constants.URL.host
+        components.path = Constants.URL.eventsPath
+        components.queryItems = [queryItem]
+        
+        return components.url
+    }
 }

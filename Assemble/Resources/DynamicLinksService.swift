@@ -13,7 +13,7 @@ class DynamicLinksService {
     static func generateEventInviteLink(_ event: Event, completion: @escaping (_ url: URL?, _ error: Error?) -> Void) {
         let defaultURL = URL(string: Constants.URL.baseURL)!
         
-        guard let linkParameter = generateEventUrl(event) else {
+        guard let linkParameter = event.generatedURL() else {
             completion(defaultURL, nil)
             return
         }
@@ -39,18 +39,6 @@ class DynamicLinksService {
             
             completion(url, nil)
         })
-    }
-    
-    static func generateEventUrl(_ event: Event) -> URL? {
-        var components = URLComponents()
-        let queryItem = URLQueryItem(name: "eventUid", value: event.uid)
-
-        components.scheme = Constants.URL.scheme
-        components.host = Constants.URL.host
-        components.path = Constants.URL.eventsPath
-        components.queryItems = [queryItem]
-        
-        return components.url
     }
 
 }

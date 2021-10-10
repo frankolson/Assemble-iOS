@@ -23,6 +23,7 @@
 		BE364F8A26F51781004FA8C2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE364F8926F51781004FA8C2 /* Colors.xcassets */; };
 		BE364F8C26F54881004FA8C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE364F8B26F54881004FA8C2 /* GoogleService-Info.plist */; };
 		BE4C8F7D2702A41300ECE4DD /* FirebaseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C8F7C2702A41300ECE4DD /* FirebaseCodable.swift */; };
+		BE70A5A42713383200832A1C /* ShareEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70A5A32713383200832A1C /* ShareEventViewController.swift */; };
 		BE97DF1E26F8E34A00F43394 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE97DF1D26F8E34A00F43394 /* Event.swift */; };
 		BEA8F1C126FD6A82006D442E /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA8F1C026FD6A82006D442E /* DatePickerTableViewCell.swift */; };
 		BEBD87FA27066FE900C63A51 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBD87F927066FE900C63A51 /* FirebaseService.swift */; };
@@ -52,6 +53,7 @@
 		BE364F8926F51781004FA8C2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BE364F8B26F54881004FA8C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BE4C8F7C2702A41300ECE4DD /* FirebaseCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCodable.swift; sourceTree = "<group>"; };
+		BE70A5A32713383200832A1C /* ShareEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareEventViewController.swift; sourceTree = "<group>"; };
 		BE97DF1D26F8E34A00F43394 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BEA8F1C026FD6A82006D442E /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		BEBD87F927066FE900C63A51 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				BE074C4426F6B47B0044809C /* CreateEventViewController.swift */,
 				BEBFE05826F6BF9B00231F30 /* EditDescriptionViewController.swift */,
 				BEBD87FB2706872F00C63A51 /* ShowEventViewController.swift */,
+				BE70A5A32713383200832A1C /* ShareEventViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				BE364F6726F5116A004FA8C2 /* SceneDelegate.swift in Sources */,
 				BE074C3B26F5671B0044809C /* MyEventsViewController.swift in Sources */,
 				BEBD87FE27077BFA00C63A51 /* DynamicLinksService.swift in Sources */,
+				BE70A5A42713383200832A1C /* ShareEventViewController.swift in Sources */,
 				BE074C3F26F690C80044809C /* FirebaseConstants.swift in Sources */,
 				BE074C4526F6B47B0044809C /* CreateEventViewController.swift in Sources */,
 			);

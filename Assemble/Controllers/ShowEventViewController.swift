@@ -33,15 +33,20 @@ class ShowEventViewController: UIViewController {
         // TODO: create method for fetching RSVPs
     }
     
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "shareEvent", let target = segue.destination as? ShareEventViewController {
+            target.event = event
+        }
+        
+        return
     }
-    */
-
+    
+    // MARK: - Actions
+    
+    @IBAction func share(_ sender: Any) {
+        performSegue(withIdentifier: "shareEvent", sender: self)
+    }
+    
 }

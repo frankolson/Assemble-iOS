@@ -34,7 +34,6 @@ class DynamicLinksService {
                 for warning in warnings {
                     print("FDL warning: \(warning)")
                 }
-                return
             }
             
             completion(url, nil)

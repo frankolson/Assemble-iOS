@@ -56,10 +56,13 @@ class EventBase: Codable {
 
 // MARK: - Models
 
-class NewEvent: EventBase { }
+class NewEvent: EventBase {
+    var inviteCode: String?
+}
 
 class Event: EventBase, FirebaseCodable {
     var uid: String!
+    var inviteCode: String!
     
     func generatedURL() -> URL? {
         var components = URLComponents()

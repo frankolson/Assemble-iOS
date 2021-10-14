@@ -20,8 +20,10 @@ class FirebaseService {
     // MARK: CRUD actions
     
     func create(_ newEvent: NewEvent, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        let updatedEvent = addInviteCodeToEvent(newEvent)
+        
         do {
-            let data = try FirebaseEncoder().encode(newEvent)
+            let data = try FirebaseEncoder().encode(updatedEvent)
             
             databaseReference.child("events").childByAutoId().setValue(data) { error, databaseReference in
                 guard error == nil else {
@@ -30,8 +32,9 @@ class FirebaseService {
                 }
                 
                 let newEventUid = databaseReference.key!
-                self.databaseReference.child("userEvents/\(self.currentUser.uid)/\(newEventUid)").setValue(data)
-                self.databaseReference.child("eventOwners/\(newEventUid)/\(self.currentUser.uid)").setValue(true)
+                
+                self.addUserEvent(eventUid: newEventUid, data: data)
+                self.addOwnedEvent(eventUid: newEventUid)
                 completion(true, nil)
             }
         } catch let error {
@@ -65,6 +68,19 @@ class FirebaseService {
             completion(events, nil)
             return
         })
+    }
+    
+    func addInviteCodeToEvent(_ event: NewEvent) -> NewEvent {
+        event.inviteCode = UUID().uuidString
+        return event
+    }
+    
+    private func addUserEvent(eventUid: String, data: Any) {
+        self.databaseReference.child("userEvents/\(self.currentUser.uid)/\(eventUid)").setValue(data)
+    }
+    
+    private func addOwnedEvent(eventUid: String) {
+        self.databaseReference.child("eventOwners/\(eventUid)/\(self.currentUser.uid)").setValue(true)
     }
     
 }

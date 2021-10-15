@@ -62,13 +62,6 @@ class NewEvent: EventBase {}
 class Event: EventBase, FirebaseCodable {
     var uid: String!
     
-    func printAttributes() {
-        print("uid: \(uid)")
-        print("title: \(title)")
-        print("description: \(description)")
-        print("startDate: \(startDate)")
-    }
-    
     var inviteURL: URL? {
         var components = URLComponents()
         let queryItem = URLQueryItem(name: "inviteCode", value: inviteCode)
@@ -82,7 +75,6 @@ class Event: EventBase, FirebaseCodable {
     }
     
     func setUid(_ uid: String) {
-        print("1. Attempt made to set the uid: \(uid)")
         self.uid = uid
     }
     

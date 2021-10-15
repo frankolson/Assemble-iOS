@@ -57,7 +57,6 @@ class FirebaseService {
             let events = snapshot.children.compactMap { singleEventSnapshot -> Event? in
                 let singleEventSnapshot = singleEventSnapshot as! DataSnapshot
                 let event: Event? = decode(from: singleEventSnapshot)
-                event?.printAttributes()
                 return event
             }
             

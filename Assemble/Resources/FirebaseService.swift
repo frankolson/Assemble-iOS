@@ -55,15 +55,10 @@ class FirebaseService {
             }
 
             let events = snapshot.children.compactMap { singleEventSnapshot -> Event? in
-                do {
-                    let singleEventSnapshot = singleEventSnapshot as! DataSnapshot
-                    let event = try FirebaseDecoder().decode(Event.self, from: singleEventSnapshot.value!)
-                    return event
-                } catch let error {
-                    print(error)
-                }
-                
-                return nil
+                let singleEventSnapshot = singleEventSnapshot as! DataSnapshot
+                let event: Event? = decode(from: singleEventSnapshot)
+                event?.printAttributes()
+                return event
             }
             
             completion(events, nil)

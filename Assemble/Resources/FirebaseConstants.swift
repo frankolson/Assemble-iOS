@@ -27,7 +27,9 @@ struct Constants {
         }
         static let dynamicLinksURI = "https://cyberhoodie.page.link"
         
-        static let eventsPath = "/events"
+        func eventAcceptInvitation(event: Event) -> String {
+            return "/events/\(event.uid!)/accept-invitation"
+        }
     }
     
     struct Apple {

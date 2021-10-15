@@ -62,15 +62,29 @@ class NewEvent: EventBase {}
 class Event: EventBase, FirebaseCodable {
     var uid: String!
     
-    func generatedURL() -> URL? {
+    func printAttributes() {
+        print("uid: \(uid)")
+        print("title: \(title)")
+        print("description: \(description)")
+        print("startDate: \(startDate)")
+    }
+    
+    var inviteURL: URL? {
         var components = URLComponents()
-        let queryItem = URLQueryItem(name: "eventUid", value: uid)
+        let queryItem = URLQueryItem(name: "inviteCode", value: inviteCode)
 
         components.scheme = Constants.URL.scheme
         components.host = Constants.URL.host
-        components.path = Constants.URL.eventsPath
+        components.path = Constants.URL().eventAcceptInvitation(event: self)
         components.queryItems = [queryItem]
         
         return components.url
     }
+    
+    func setUid(_ uid: String) {
+        print("1. Attempt made to set the uid: \(uid)")
+        self.uid = uid
+    }
+    
+    
 }

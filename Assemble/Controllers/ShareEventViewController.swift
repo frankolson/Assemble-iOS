@@ -57,19 +57,23 @@ class ShareEventViewController: UIViewController {
     // MARK: - Helpers
     
     func generateShareLink() {
-        DynamicLinksService.generateEventInviteLink(event) { url, error in
-            self.activityIndicator.stopAnimating()
-
+        self.activityIndicator.stopAnimating()
+        
+        guard let inviteURL = event.inviteURL else {
+            enableFailureState()
+            return
+        }
+        
+        print(inviteURL)
+        DynamicLinksService.generateLink(inviteURL, title: "Event invite from Assemble") { url, error in
             if let error = error {
                 debugPrint(error)
-                self.inviteLink.text = self.errorText
-                self.showLinkGenerationFailureAlert()
+                self.enableFailureState()
                 return
             }
             
             guard url != nil else {
-                self.inviteLink.text = self.errorText
-                self.showLinkGenerationFailureAlert()
+                self.enableFailureState()
                 return
             }
             
@@ -77,6 +81,11 @@ class ShareEventViewController: UIViewController {
             self.shareButton.isEnabled = true
             return
         }
+    }
+    
+    func enableFailureState() {
+        inviteLink.text = errorText
+        showLinkGenerationFailureAlert()
     }
     
     func showLinkGenerationFailureAlert() {

@@ -10,19 +10,13 @@ import Firebase
 
 class DynamicLinksService {
 
-    static func generateEventInviteLink(_ event: Event, completion: @escaping (_ url: URL?, _ error: Error?) -> Void) {
-        let defaultURL = URL(string: Constants.URL.baseURL)!
-        
-        guard let linkParameter = event.generatedURL() else {
-            completion(defaultURL, nil)
-            return
-        }
-        let linkBuilder = DynamicLinkComponents(link: linkParameter, domainURIPrefix: Constants.URL.dynamicLinksURI)
+    static func generateLink(_ url: URL, title: String, completion: @escaping (_ url: URL?, _ error: Error?) -> Void) {
+        let linkBuilder = DynamicLinkComponents(link: url, domainURIPrefix: Constants.URL.dynamicLinksURI)
         
         linkBuilder?.iOSParameters = DynamicLinkIOSParameters(bundleID: Constants.Apple.bundleId)
         linkBuilder?.iOSParameters?.appStoreID = Constants.Apple.appStoreId
         linkBuilder?.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
-        linkBuilder?.socialMetaTagParameters?.title = "Event invite from Assemble"
+        linkBuilder?.socialMetaTagParameters?.title = title
         
         linkBuilder?.shorten(completion: { url, warnings, error in
             if let error = error {

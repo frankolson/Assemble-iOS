@@ -24,6 +24,7 @@ class FirebaseService {
         
         do {
             let data = try FirebaseEncoder().encode(updatedEvent)
+            print(data)
             
             databaseReference.child("events").childByAutoId().setValue(data) { error, databaseReference in
                 guard error == nil else {

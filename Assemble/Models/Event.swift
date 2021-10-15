@@ -14,6 +14,7 @@ class EventBase: Codable {
     var startTime: TimeInterval?
     var endDate: Date?
     var endTime: TimeInterval?
+    var inviteCode: String?
     
     var formattedStartDate: String? {
         guard let startDateIso = startDate else { return nil }
@@ -56,13 +57,10 @@ class EventBase: Codable {
 
 // MARK: - Models
 
-class NewEvent: EventBase {
-    var inviteCode: String?
-}
+class NewEvent: EventBase {}
 
 class Event: EventBase, FirebaseCodable {
     var uid: String!
-    var inviteCode: String!
     
     func generatedURL() -> URL? {
         var components = URLComponents()

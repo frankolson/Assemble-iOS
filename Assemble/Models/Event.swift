@@ -64,12 +64,13 @@ class Event: EventBase, FirebaseCodable {
     
     var inviteURL: URL? {
         var components = URLComponents()
-        let queryItem = URLQueryItem(name: "inviteCode", value: inviteCode)
+        let eventUidQueryItem = URLQueryItem(name: "eventUid", value: uid)
+        let inviteCodeQueryItem = URLQueryItem(name: "inviteCode", value: inviteCode)
 
         components.scheme = Constants.URL.scheme
         components.host = Constants.URL.host
-        components.path = Constants.URL().eventAcceptInvitation(event: self)
-        components.queryItems = [queryItem]
+        components.path = Constants.URL.eventAcceptInvitationPath
+        components.queryItems = [eventUidQueryItem, inviteCodeQueryItem]
         
         return components.url
     }

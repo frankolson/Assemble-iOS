@@ -9,15 +9,16 @@ import UIKit
 import CoreData
 import Firebase
 import FirebaseAuthUI
+import FirebaseEmailAuthUI
+import FirebaseGoogleAuthUI
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        configureAuth()
         return true
     }
 
@@ -29,12 +30,80 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+            self.handleIncomingDynamicLink(dynamicLink)
+            return true
+        }
+        
+        return false
+    }
+    
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication ?? "") ?? false {
             return true
         }
-        // other URL handling goes here.
+        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+            self.handleIncomingDynamicLink(dynamicLink)
+            return true
+        }
+        
         return false
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if let incomingURL = userActivity.webpageURL {
+            print("Incoming URL is \(incomingURL)")
+            let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { dynamicLink, error in
+                guard error == nil else {
+                    print("Found an error! \(error!.localizedDescription)")
+                    return
+                }
+                if let dynamicLink = dynamicLink {
+                    self.handleIncomingDynamicLink(dynamicLink)
+                }
+            }
+            
+            return linkHandled
+        }
+        
+        return false
+    }
+    
+    func handleIncomingDynamicLink(_ dynamicLink: DynamicLink) {
+        guard let url = dynamicLink.url else {
+            print("That's weird. My dynamic link object has no url.")
+            return
+        }
+        
+        // IMPORTANT: For now, we are only going to process event invite links
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let queryItems = components.queryItems else { return }
+        
+        let path = components.path
+        guard path == "/events/accept-invitation",
+              let eventUid = queryItems.filter({$0.name == "eventUid"}).first?.value,
+              let inviteCode = queryItems.filter({$0.name == "inviteCode"}).first?.value else { return }
+        
+        let firebaseService = FirebaseService()
+        firebaseService.getEvent(eventUid) { event, error in
+            guard error == nil, let event = event else { return }
+            
+//            firebaseService.addUserToGuestList(<#T##user: User##User#>, event: <#T##Event#>, inviteCode: <#T##String#>)
+        }
+    }
+    
+    // MARK: - Authentication
+    
+    func configureAuth() {
+        let authUI = FUIAuth.defaultAuthUI()!
+        authUI.delegate = self
+        
+        let providers: [FUIAuthProvider] = [
+            FUIEmailAuth(),
+            FUIGoogleAuth(authUI: authUI)
+        ]
+        authUI.providers = providers
     }
 
     // MARK: - Core Data stack

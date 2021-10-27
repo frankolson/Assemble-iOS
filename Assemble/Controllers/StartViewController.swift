@@ -26,7 +26,6 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureAuth()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,11 +36,6 @@ class StartViewController: UIViewController {
     
     // MARK: Navigation
     
-    func presentLoginSession() {
-        let authViewController = FUIAuth.defaultAuthUI()!.authViewController()
-        self.present(authViewController, animated: true, completion: nil)
-    }
-    
     func segueToEvents() {
         performSegue(withIdentifier: "showEvents", sender: nil)
     }
@@ -49,7 +43,7 @@ class StartViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func showLoginView(_ sender: Any) {
-        presentLoginSession()
+        presentLoginSession(sender: self)
     }
     
 }
@@ -62,17 +56,6 @@ extension StartViewController: FUIAuthDelegate {
         if authDataResult?.user != nil {
             segueToEvents()
         }
-    }
-    
-    func configureAuth() {
-        let authUI = FUIAuth.defaultAuthUI()!
-        authUI.delegate = self
-        
-        let providers: [FUIAuthProvider] = [
-            FUIEmailAuth(),
-            FUIGoogleAuth(authUI: authUI)
-        ]
-        authUI.providers = providers
     }
 
 }

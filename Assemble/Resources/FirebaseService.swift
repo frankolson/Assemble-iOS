@@ -65,6 +65,32 @@ class FirebaseService {
         })
     }
     
+    func getEvent(_ uid: String, completion: @escaping (_ event: Event?, _ error: Error?) -> Void) {
+        databaseReference.child("events").child(uid).getData(completion: { error, snapshot in
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            guard snapshot.value != nil else {
+                completion(nil, nil)
+                return
+            }
+
+            let event: Event? = decode(from: snapshot)
+            completion(event, nil)
+            return
+        })
+    }
+    
+    func addUserToGuestList(_ user: User, event: Event, inviteCode: String) -> Bool {
+        if event.inviteCode == inviteCode {
+            // add user to invite list
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func addInviteCodeToEvent(_ event: NewEvent) -> NewEvent {
         event.inviteCode = UUID().uuidString
         return event

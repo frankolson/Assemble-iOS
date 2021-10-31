@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MyEventsViewController: UIViewController {
     
@@ -26,12 +27,15 @@ class MyEventsViewController: UIViewController {
 
         myEventsTable.delegate = self
         myEventsTable.dataSource = self
+        handleDeepLinks()
         refreshEvents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("View will appear")
         
+        handleDeepLinks()
         refreshEvents()
     }
     
@@ -54,6 +58,37 @@ class MyEventsViewController: UIViewController {
     }
     
     // MARK: Navigation
+    
+    func handleDeepLinks() {
+        print("Processing potential deeplinks")
+        guard let deeplink = DynamicLinksProcessing.shared.deepLink else { return }
+        print("found deeplink: \(deeplink)")
+        
+        switch deeplink {
+        case .home:
+            break
+        case .addToGuestList(let eventUid, let inviteCode):
+            firebaseClient.getEvent(eventUid) { event, error in
+                if let error = error {
+                    debugPrint(error)
+                    return
+                }
+                guard let event = event else { return }
+                print("found event: \(event.title)")
+                
+                self.firebaseClient.addUserToGuestList(Auth.auth().currentUser!, event: event, inviteCode: inviteCode) { error in
+                    if let error = error {
+                        debugPrint(error)
+                        return
+                    }
+                    
+                    DynamicLinksProcessing.shared.deepLink = nil
+                    print("Guest list updated and deeplink cleared")
+                    self.performSegue(withIdentifier: "showEvent", sender: event)
+                }
+            }
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "createEvent" || segue.identifier == "showEvent" else { return }

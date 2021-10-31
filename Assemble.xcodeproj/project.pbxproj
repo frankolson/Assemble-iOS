@@ -29,8 +29,9 @@
 		BEA8F1C126FD6A82006D442E /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA8F1C026FD6A82006D442E /* DatePickerTableViewCell.swift */; };
 		BEBD87FA27066FE900C63A51 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBD87F927066FE900C63A51 /* FirebaseService.swift */; };
 		BEBD87FC2706872F00C63A51 /* ShowEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBD87FB2706872F00C63A51 /* ShowEventViewController.swift */; };
-		BEBD87FE27077BFA00C63A51 /* DynamicLinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBD87FD27077BFA00C63A51 /* DynamicLinksService.swift */; };
+		BEBD87FE27077BFA00C63A51 /* DynamicLinksProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBD87FD27077BFA00C63A51 /* DynamicLinksProcessing.swift */; };
 		BEBFE05926F6BF9B00231F30 /* EditDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBFE05826F6BF9B00231F30 /* EditDescriptionViewController.swift */; };
+		BECF69CC272EE7BB00DAB1FB /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF69CB272EE7BB00DAB1FB /* DeepLinkHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,8 +61,9 @@
 		BEA8F1C026FD6A82006D442E /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		BEBD87F927066FE900C63A51 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		BEBD87FB2706872F00C63A51 /* ShowEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventViewController.swift; sourceTree = "<group>"; };
-		BEBD87FD27077BFA00C63A51 /* DynamicLinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLinksService.swift; sourceTree = "<group>"; };
+		BEBD87FD27077BFA00C63A51 /* DynamicLinksProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLinksProcessing.swift; sourceTree = "<group>"; };
 		BEBFE05826F6BF9B00231F30 /* EditDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDescriptionViewController.swift; sourceTree = "<group>"; };
+		BECF69CB272EE7BB00DAB1FB /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
 		DEF25D783621AD2C3BF72A15 /* Pods-Assemble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assemble.release.xcconfig"; path = "Target Support Files/Pods-Assemble/Pods-Assemble.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,7 +157,8 @@
 				BE364F8926F51781004FA8C2 /* Colors.xcassets */,
 				BE074C3E26F690C80044809C /* FirebaseConstants.swift */,
 				BEBD87F927066FE900C63A51 /* FirebaseService.swift */,
-				BEBD87FD27077BFA00C63A51 /* DynamicLinksService.swift */,
+				BEBD87FD27077BFA00C63A51 /* DynamicLinksProcessing.swift */,
+				BECF69CB272EE7BB00DAB1FB /* DeepLinkHandler.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BECF69CC272EE7BB00DAB1FB /* DeepLinkHandler.swift in Sources */,
 				BE364F6926F5116A004FA8C2 /* StartViewController.swift in Sources */,
 				BEBFE05926F6BF9B00231F30 /* EditDescriptionViewController.swift in Sources */,
 				BE364F8826F516DC004FA8C2 /* Colors.swift in Sources */,
@@ -348,7 +352,7 @@
 				BE364F6526F5116A004FA8C2 /* AppDelegate.swift in Sources */,
 				BE364F6726F5116A004FA8C2 /* SceneDelegate.swift in Sources */,
 				BE074C3B26F5671B0044809C /* MyEventsViewController.swift in Sources */,
-				BEBD87FE27077BFA00C63A51 /* DynamicLinksService.swift in Sources */,
+				BEBD87FE27077BFA00C63A51 /* DynamicLinksProcessing.swift in Sources */,
 				BE70A5A42713383200832A1C /* ShareEventViewController.swift in Sources */,
 				BE074C3F26F690C80044809C /* FirebaseConstants.swift in Sources */,
 				BE074C4526F6B47B0044809C /* CreateEventViewController.swift in Sources */,

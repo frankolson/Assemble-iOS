@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -49,7 +50,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        if let incomingURL = userActivity.webpageURL {
+            DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { dynamicLink, error in
+                if let error = error {
+                    print("Found an error! \(error.localizedDescription)")
+                    return
+                }
+                guard let dynamicLink = dynamicLink else { return }
 
+                DeepLinkHandler().handleIncomingDynamicLink(dynamicLink)
+            }
+        }
+    }
 
 }
 

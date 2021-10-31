@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ShareEventViewController: UIViewController {
     
@@ -65,22 +66,28 @@ class ShareEventViewController: UIViewController {
         }
         
         print(inviteURL)
-        DynamicLinksService.generateLink(inviteURL, title: "Event invite from Assemble") { url, error in
+        let linkBuilder = DynamicLinkComponents(link: inviteURL, domainURIPrefix: Constants.URL.dynamicLinksURI)
+        
+        linkBuilder?.iOSParameters = DynamicLinkIOSParameters(bundleID: Constants.Apple.bundleId)
+        linkBuilder?.iOSParameters?.appStoreID = Constants.Apple.appStoreId
+        linkBuilder?.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
+        linkBuilder?.socialMetaTagParameters?.title = title
+        
+        linkBuilder?.shorten(completion: { url, warnings, error in
             if let error = error {
                 debugPrint(error)
                 self.enableFailureState()
                 return
             }
             
-            guard url != nil else {
+            guard let url = url else {
                 self.enableFailureState()
                 return
             }
             
-            self.inviteLink.text = url?.absoluteString
+            self.inviteLink.text = url.absoluteString
             self.shareButton.isEnabled = true
-            return
-        }
+        })
     }
     
     func enableFailureState() {

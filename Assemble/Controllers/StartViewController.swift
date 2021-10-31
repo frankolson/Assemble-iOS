@@ -26,6 +26,7 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureAuth()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,6 +57,17 @@ extension StartViewController: FUIAuthDelegate {
         if authDataResult?.user != nil {
             segueToEvents()
         }
+    }
+    
+    func configureAuth() {
+        let authUI = FUIAuth.defaultAuthUI()!
+        authUI.delegate = self
+        
+        let providers: [FUIAuthProvider] = [
+            FUIEmailAuth(),
+            FUIGoogleAuth(authUI: authUI)
+        ]
+        authUI.providers = providers
     }
 
 }

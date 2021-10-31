@@ -82,18 +82,29 @@ class FirebaseService {
         })
     }
     
-    func addUserToGuestList(_ user: User, event: Event, inviteCode: String) -> Bool {
+    func addUserToGuestList(_ user: User, event: Event, inviteCode: String, completion: @escaping (_ error: Error?) -> Void) {
         if event.inviteCode == inviteCode {
-            // add user to invite list
-            return true
+            do {
+                let data = try FirebaseEncoder().encode(event)
+                
+                self.addUserEvent(eventUid: event.uid, data: data)
+                self.addAttendeeToEvent(eventUid: event.uid)
+                completion(nil)
+            } catch let error {
+                completion(error)
+            }
         } else {
-            return false
+            completion(InvalidInviteCodeError())
         }
     }
     
     func addInviteCodeToEvent(_ event: NewEvent) -> NewEvent {
         event.inviteCode = UUID().uuidString
         return event
+    }
+    
+    private func addAttendeeToEvent(eventUid: String) {
+        self.databaseReference.child("eventAttendees/\(eventUid)/\(self.currentUser.uid)").setValue(true)
     }
     
     private func addUserEvent(eventUid: String, data: Any) {
@@ -104,4 +115,14 @@ class FirebaseService {
         self.databaseReference.child("eventOwners/\(eventUid)/\(self.currentUser.uid)").setValue(true)
     }
     
+}
+
+struct InvalidInviteCodeError: Error {
+    let description = "Provided invite code does not match the event's invite code"
+}
+
+extension InvalidInviteCodeError: LocalizedError {
+    var errorDescription: String? {
+        return description
+    }
 }

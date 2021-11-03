@@ -82,13 +82,35 @@ class FirebaseService {
         })
     }
     
-    func addUserToGuestList(_ user: User, event: Event, inviteCode: String, completion: @escaping (_ error: Error?) -> Void) {
+    func getEventGuestList(_ eventUid: String, completion: @escaping (_ events: [Person], _ error: Error?) -> Void) {
+        databaseReference.child("eventAttendees").child(eventUid).getData(completion: { error, snapshot in
+            guard error == nil else {
+                completion([], error)
+                return
+            }
+            guard snapshot.value != nil else {
+                completion([], nil)
+                return
+            }
+
+            let people = snapshot.children.compactMap { singleEventSnapshot -> Person? in
+                let singleEventSnapshot = singleEventSnapshot as! DataSnapshot
+                let person: Person? = decode(from: singleEventSnapshot)
+                return person
+            }
+            
+            completion(people, nil)
+            return
+        })
+    }
+    
+    func addPersonToGuestList(_ person: Person, event: Event, inviteCode: String, completion: @escaping (_ error: Error?) -> Void) {
         if event.inviteCode == inviteCode {
             do {
                 let data = try FirebaseEncoder().encode(event)
                 
                 self.addUserEvent(eventUid: event.uid, data: data)
-                self.addAttendeeToEvent(eventUid: event.uid)
+                self.addAttendeeToGuestList(person: person, eventUid: event.uid)
                 completion(nil)
             } catch let error {
                 completion(error)
@@ -103,8 +125,9 @@ class FirebaseService {
         return event
     }
     
-    private func addAttendeeToEvent(eventUid: String) {
-        self.databaseReference.child("eventAttendees/\(eventUid)/\(self.currentUser.uid)").setValue(true)
+    private func addAttendeeToGuestList(person: Person, eventUid: String) {
+        let data = try! FirebaseEncoder().encode(person)
+        self.databaseReference.child("eventAttendees/\(eventUid)/\(person.uid!)").setValue(data)
     }
     
     private func addUserEvent(eventUid: String, data: Any) {

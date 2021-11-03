@@ -32,6 +32,7 @@
 		BEBD87FE27077BFA00C63A51 /* DynamicLinksProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBD87FD27077BFA00C63A51 /* DynamicLinksProcessing.swift */; };
 		BEBFE05926F6BF9B00231F30 /* EditDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBFE05826F6BF9B00231F30 /* EditDescriptionViewController.swift */; };
 		BECF69CC272EE7BB00DAB1FB /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF69CB272EE7BB00DAB1FB /* DeepLinkHandler.swift */; };
+		BEE064A02732CCAA002B580B /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0649F2732CCAA002B580B /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		BEBD87FD27077BFA00C63A51 /* DynamicLinksProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLinksProcessing.swift; sourceTree = "<group>"; };
 		BEBFE05826F6BF9B00231F30 /* EditDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDescriptionViewController.swift; sourceTree = "<group>"; };
 		BECF69CB272EE7BB00DAB1FB /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
+		BEE0649F2732CCAA002B580B /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		DEF25D783621AD2C3BF72A15 /* Pods-Assemble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assemble.release.xcconfig"; path = "Target Support Files/Pods-Assemble/Pods-Assemble.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +192,7 @@
 			children = (
 				BE97DF1D26F8E34A00F43394 /* Event.swift */,
 				BE4C8F7C2702A41300ECE4DD /* FirebaseCodable.swift */,
+				BEE0649F2732CCAA002B580B /* Person.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				BE364F6526F5116A004FA8C2 /* AppDelegate.swift in Sources */,
 				BE364F6726F5116A004FA8C2 /* SceneDelegate.swift in Sources */,
 				BE074C3B26F5671B0044809C /* MyEventsViewController.swift in Sources */,
+				BEE064A02732CCAA002B580B /* Person.swift in Sources */,
 				BEBD87FE27077BFA00C63A51 /* DynamicLinksProcessing.swift in Sources */,
 				BE70A5A42713383200832A1C /* ShareEventViewController.swift in Sources */,
 				BE074C3F26F690C80044809C /* FirebaseConstants.swift in Sources */,

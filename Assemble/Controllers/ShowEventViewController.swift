@@ -20,14 +20,17 @@ class ShowEventViewController: UIViewController {
     // MARK: Properties
     
     var event: Event!
+    var guestList: [Person] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guestListTableView.delegate = self
+        guestListTableView.dataSource = self
 
         titleLabel.text = event.title
         scheduleLabel.text = event.formattedStartDate // change to full schedule
         descriptionLabel.text = event.description
-        // TODO: create method for fetching RSVPs
+        loadGuestList()
     }
     
     // MARK: - Navigation
@@ -45,5 +48,38 @@ class ShowEventViewController: UIViewController {
     @IBAction func share(_ sender: Any) {
         performSegue(withIdentifier: "shareEvent", sender: self)
     }
+    
+    // MARK: - Helpers
+    
+    func loadGuestList() {
+        FirebaseService().getEventGuestList(event.uid) { people, error in
+            if let error = error {
+                debugPrint(error)
+                return
+            }
+            
+            self.guestList = people
+            self.guestListTableView.reloadData()
+        }
+    }
+    
+}
+
+extension ShowEventViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return guestList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // dequeue cell
+        let cell: UITableViewCell = guestListTableView.dequeueReusableCell(withIdentifier: "guestCell", for: indexPath)
+        let guest: Person! = guestList[indexPath.row]
+        
+        cell.textLabel?.text = guest.email ?? "Anonymous"
+        
+        return cell
+    }
+    
     
 }

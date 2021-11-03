@@ -76,7 +76,12 @@ class MyEventsViewController: UIViewController {
                 guard let event = event else { return }
                 print("found event: \(event.title)")
                 
-                self.firebaseClient.addUserToGuestList(Auth.auth().currentUser!, event: event, inviteCode: inviteCode) { error in
+                let currentUser = Auth.auth().currentUser!
+                let guest = Person(
+                    uid: currentUser.uid,
+                    email: currentUser.email
+                )
+                self.firebaseClient.addPersonToGuestList(guest, event: event, inviteCode: inviteCode) { error in
                     if let error = error {
                         debugPrint(error)
                         return

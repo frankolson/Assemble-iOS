@@ -440,34 +440,27 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8f-sC-y3C">
-                                <rect key="frame" x="20" y="192.5" width="46" height="30"/>
-                                <color key="backgroundColor" name="Primary"/>
-                                <state key="normal" title="RSVP?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paK-VV-vcJ" userLabel="Description Label">
-                                <rect key="frame" x="20" y="230.5" width="94.5" height="20.5"/>
+                                <rect key="frame" x="20" y="192.5" width="94.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nc-eH-K6S" userLabel="Description">
-                                <rect key="frame" x="20" y="259" width="374" height="203"/>
+                                <rect key="frame" x="20" y="221" width="374" height="203"/>
                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Responses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koq-56-nJX" userLabel="Responses Label">
-                                <rect key="frame" x="20" y="470" width="89.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guest List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koq-56-nJX" userLabel="Guest List Label">
+                                <rect key="frame" x="20" y="432" width="82.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ui-ru-Crg" userLabel="+ Invite">
-                                <rect key="frame" x="20" y="536.5" width="51" height="30"/>
+                                <rect key="frame" x="20" y="460.5" width="51" height="30"/>
                                 <color key="backgroundColor" name="Primary"/>
                                 <state key="normal" title="+ Invite">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -476,57 +469,59 @@
                                     <action selector="share:" destination="0oo-oR-gTi" eventType="touchUpInside" id="8PU-2u-2MW"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UM6-1b-Prb" userLabel="Responses">
-                                <rect key="frame" x="20" y="498.5" width="374" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jM-TM-PEg" userLabel="Yes">
-                                        <rect key="frame" x="0.0" y="0.0" width="118" height="30"/>
-                                        <state key="normal" title="# Yes"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8BB-ln-xFX" userLabel="No">
-                                        <rect key="frame" x="128" y="0.0" width="118" height="30"/>
-                                        <state key="normal" title="# No"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muU-Mt-dX3" userLabel="Invited">
-                                        <rect key="frame" x="256" y="0.0" width="118" height="30"/>
-                                        <state key="normal" title="# Invited"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A9K-6Y-oer" userLabel="Guest List Table View">
+                                <rect key="frame" x="20" y="498.5" width="374" height="363.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="qN1-4P-62A" style="IBUITableViewCellStyleDefault" id="wbx-fO-GyT">
+                                        <rect key="frame" x="0.0" y="24.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wbx-fO-GyT" id="yNY-oo-onl">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qN1-4P-62A">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U8R-eT-upW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="U8R-eT-upW" firstAttribute="trailing" secondItem="A9K-6Y-oer" secondAttribute="trailing" constant="20" id="0Ed-rC-BCF"/>
                             <constraint firstItem="koq-56-nJX" firstAttribute="leading" secondItem="U8R-eT-upW" secondAttribute="leading" constant="20" id="29F-1c-ok7"/>
-                            <constraint firstItem="B8f-sC-y3C" firstAttribute="leading" secondItem="U8R-eT-upW" secondAttribute="leading" constant="20" id="2m4-pR-G4r"/>
-                            <constraint firstItem="paK-VV-vcJ" firstAttribute="top" secondItem="B8f-sC-y3C" secondAttribute="bottom" constant="8" symbolic="YES" id="3mc-K5-XYm"/>
-                            <constraint firstItem="UM6-1b-Prb" firstAttribute="top" secondItem="koq-56-nJX" secondAttribute="bottom" constant="8" symbolic="YES" id="7Ln-sx-ek6"/>
+                            <constraint firstItem="paK-VV-vcJ" firstAttribute="top" secondItem="PA6-3u-Scn" secondAttribute="bottom" constant="8" symbolic="YES" id="3mc-K5-XYm"/>
                             <constraint firstItem="9Ui-ru-Crg" firstAttribute="leading" secondItem="U8R-eT-upW" secondAttribute="leading" constant="20" id="8ak-ps-q7D"/>
-                            <constraint firstItem="U8R-eT-upW" firstAttribute="trailing" secondItem="UM6-1b-Prb" secondAttribute="trailing" constant="20" id="CAB-3G-gIa"/>
                             <constraint firstItem="3Nc-eH-K6S" firstAttribute="top" secondItem="paK-VV-vcJ" secondAttribute="bottom" constant="8" symbolic="YES" id="EUH-7c-svO"/>
+                            <constraint firstItem="9Ui-ru-Crg" firstAttribute="top" secondItem="koq-56-nJX" secondAttribute="bottom" constant="8" symbolic="YES" id="Fhm-9w-Jyh"/>
                             <constraint firstItem="paK-VV-vcJ" firstAttribute="leading" secondItem="U8R-eT-upW" secondAttribute="leading" constant="20" id="LdO-1g-wjw"/>
-                            <constraint firstItem="B8f-sC-y3C" firstAttribute="top" secondItem="PA6-3u-Scn" secondAttribute="bottom" constant="8" symbolic="YES" id="SB5-a0-AJy"/>
                             <constraint firstItem="etU-KK-HfQ" firstAttribute="top" secondItem="U8R-eT-upW" secondAttribute="top" constant="20" id="Ucb-Vo-7RG"/>
                             <constraint firstItem="PA6-3u-Scn" firstAttribute="leading" secondItem="U8R-eT-upW" secondAttribute="leading" constant="20" id="YfJ-vR-mXj"/>
+                            <constraint firstItem="A9K-6Y-oer" firstAttribute="top" secondItem="9Ui-ru-Crg" secondAttribute="bottom" constant="8" symbolic="YES" id="a9T-xY-cbH"/>
                             <constraint firstItem="3Nc-eH-K6S" firstAttribute="trailing" secondItem="U8R-eT-upW" secondAttribute="trailing" constant="-20" id="aMv-lE-VIV"/>
                             <constraint firstItem="3Nc-eH-K6S" firstAttribute="leading" secondItem="U8R-eT-upW" secondAttribute="leading" constant="20" id="dGR-Xo-iB8"/>
-                            <constraint firstItem="UM6-1b-Prb" firstAttribute="leading" secondItem="U8R-eT-upW" secondAttribute="leading" constant="20" id="gL1-JD-U8d"/>
-                            <constraint firstItem="9Ui-ru-Crg" firstAttribute="top" secondItem="UM6-1b-Prb" secondAttribute="bottom" constant="8" symbolic="YES" id="pM6-C1-JWJ"/>
+                            <constraint firstItem="A9K-6Y-oer" firstAttribute="leading" secondItem="U8R-eT-upW" secondAttribute="leading" constant="20" id="gQ5-Pn-pKZ"/>
                             <constraint firstItem="koq-56-nJX" firstAttribute="top" secondItem="3Nc-eH-K6S" secondAttribute="bottom" constant="8" symbolic="YES" id="rbb-WG-DgL"/>
                             <constraint firstItem="PA6-3u-Scn" firstAttribute="top" secondItem="etU-KK-HfQ" secondAttribute="bottom" constant="8" symbolic="YES" id="ro2-sT-dwa"/>
+                            <constraint firstItem="U8R-eT-upW" firstAttribute="bottom" secondItem="A9K-6Y-oer" secondAttribute="bottom" id="sNM-kn-SXp"/>
                             <constraint firstItem="etU-KK-HfQ" firstAttribute="leading" secondItem="U8R-eT-upW" secondAttribute="leading" constant="20" id="ybG-oU-Xb9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rSw-C1-30k"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="3Nc-eH-K6S" id="WBn-No-eRk"/>
+                        <outlet property="guestListTableView" destination="A9K-6Y-oer" id="hsb-TJ-wkM"/>
                         <outlet property="inviteButton" destination="9Ui-ru-Crg" id="lh1-Es-tRt"/>
-                        <outlet property="invitedRsvpButton" destination="muU-Mt-dX3" id="7qD-wp-QYE"/>
-                        <outlet property="noRsvpButton" destination="8BB-ln-xFX" id="iXc-d7-wBt"/>
-                        <outlet property="rsvpButton" destination="B8f-sC-y3C" id="fy0-1g-oIG"/>
                         <outlet property="scheduleLabel" destination="PA6-3u-Scn" id="E1b-XL-XHA"/>
                         <outlet property="titleLabel" destination="etU-KK-HfQ" id="gea-Gw-tYE"/>
-                        <outlet property="yesRsvpButton" destination="1jM-TM-PEg" id="2Ec-Vt-axZ"/>
                         <segue destination="1uv-0c-CCc" kind="presentation" identifier="shareEvent" id="Kay-0I-zpt"/>
                     </connections>
                 </viewController>

@@ -13,12 +13,9 @@ class ShowEventViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var scheduleLabel: UILabel!
-    @IBOutlet weak var rsvpButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var yesRsvpButton: UIButton!
-    @IBOutlet weak var noRsvpButton: UIButton!
-    @IBOutlet weak var invitedRsvpButton: UIButton!
     @IBOutlet weak var inviteButton: UIButton!
+    @IBOutlet weak var guestListTableView: UITableView!
     
     // MARK: Properties
     

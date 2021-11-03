@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="122" y="114"/>
         </scene>
-        <!--EventsTabsVC-->
+        <!--EventsNavigationController-->
         <scene sceneID="VqG-bk-ZDG">
             <objects>
-                <viewControllerPlaceholder storyboardName="Events" referencedIdentifier="EventsTabsVC" id="yIZ-AZ-ENg" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Events" referencedIdentifier="EventsNavigationController" id="yIZ-AZ-ENg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTi-4O-kDt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1075" y="114"/>

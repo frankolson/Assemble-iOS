@@ -61,8 +61,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 guard let dynamicLink = dynamicLink else { return }
 
                 DeepLinkHandler().handleIncomingDynamicLink(dynamicLink)
+                self.redirectToMyEvents()
             }
         }
+    }
+    
+    func redirectToMyEvents() {
+        print("Redirecting to MyEvents after deeplinking")
+        let eventsStoryboard:UIStoryboard = UIStoryboard(name: "Events", bundle: nil)
+        let myEventsPage = eventsStoryboard.instantiateViewController(withIdentifier: "EventsNavigationController") as! UINavigationController
+        self.window?.rootViewController = myEventsPage
     }
 
 }
